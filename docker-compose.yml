@@ -1,0 +1,72 @@
+version: "3.5"
+
+services:
+  personal_loan_manager_api:
+    container_name: personal_loan_manager_api
+    build: ./api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/code
+    command: python3 manage.py runserver 0.0.0.0:8000
+    networks:
+      - personal_loan_manager_network
+    depends_on:
+      - postgresql_database
+      - celery
+      - rabbitmq
+
+  rabbitmq:
+    container_name: personal_loan_manager_rabbitmq_queue
+    image: rabbitmq:latest
+    ports:
+      - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_USER: rabbit_personal_loan_manager
+      RABBITMQ_DEFAULT_PASS: rabbit_personal_loan_manager
+    networks:
+      - personal_loan_manager_network
+
+  celery:
+    container_name: personal_loan_manager_celery
+    build: ./api
+    volumes:
+      - ./api:/code
+    command: celery -A infra.celery_gateway.worker.app worker --loglevel=INFO -Q personal_loan_manager
+    environment:
+      CELERY_BROKER_URL: amqp://rabbit_personal_loan_manager:rabbit_personal_loan_manager@rabbitmq:5672
+    depends_on:
+      - rabbitmq
+    networks:
+      - personal_loan_manager_network
+
+  flower:
+    container_name: personal_loan_manager_flower
+    image: mher/flower
+    environment:
+      CELERY_BROKER_URL: amqp://rabbit_personal_loan_manager:rabbit_personal_loan_manager@rabbitmq:5672
+      FLOWER_PORT: 8888
+    ports:
+      - "8888:8888"
+    networks:
+      - personal_loan_manager_network
+
+  postgresql_database:
+    container_name: personal_loan_manager_postgres_database
+    image: postgres:12.3
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgresql_personal_loan_manager
+      POSTGRES_DB: postgresql_personal_loan_manager
+      POSTGRES_PASSWORD: postgresql_personal_loan_manager
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data/
+    networks:
+      - personal_loan_manager_network
+
+networks:
+  personal_loan_manager_network:
+
+volumes:
+  postgres_volume:
