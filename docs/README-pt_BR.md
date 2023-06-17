@@ -1,5 +1,5 @@
 <h1 align="center">PersonalLoanManager</h1>
-<p align="center"> System to manage personal loans.</p>
+<p align="center"> Sistema para gerenciar propostas de empréstimo pessoal.</p>
 
 <p align="center">
   <a>
@@ -13,24 +13,24 @@
   </a>
 </p>
 
-English | [Português](https://github.com/DionVitor/PersonalLoanManager/blob/master/docs/README-pt_BR.md)
+[English](https://github.com/DionVitor/PersonalLoanManager/blob/master/README.md) | Português
 
-## :package: Instructions for run the app
+## :package: Instruções para rodar o app
 
-- Download docker and compose [here](https://docs.docker.com/engine/install/)
-- Clone the repository ```git clone https://github.com/DionVitor/PersonalLoanManager/```
-- Go to repository ```cd PersonalLoanManager/```
-- Build and create containers ```docker-compose up -d```
+- Instale o docker e compose [aqui](https://docs.docker.com/engine/install/)
+- Clone o repositório ```git clone https://github.com/DionVitor/PersonalLoanManager/```
+- Vá para o repositório ```cd PersonalLoanManager/```
+- Crie os containers ```docker-compose up -d```
 
-## :keyboard: How to use the system
+## :keyboard: Como usar o sistema
 
-- Enter in [personal loan offer page](http://localhost:7000/proposta-emprestimo/) in order to create a new loan offer
-- See all registered loan offers and edit which fields will be appeared on personal loan offer page accessing [admin](http://localhost:8000/admin).
-  - user: admin
-  - password: admin
-- In order to see all the processed tasks by celery, access [flower](http://localhost:8888).
+- Entre na [página de preenchimento de proposta de empréstimo](http://localhost:7000/proposta-emprestimo/) para criar uma nova proposta de empréstimo
+- Veja todas as propostas de emprétimo e edite quais campos irão aparecer na página de preenchimento de prosposta de empréstimo acessando o [admin](http://localhost:8000/admin).
+  - usuário: admin
+  - senha: admin
+- Para ver todas as tarefas processadas pelo celery, acesse o [flower](http://localhost:8888).
 
-## :hammer: Tech stack
+## :hammer: Tecnologias utilizadas
 
 - [Python](https://www.python.org/)
 - [Django](https://www.djangoproject.com/)
@@ -40,9 +40,9 @@ English | [Português](https://github.com/DionVitor/PersonalLoanManager/blob/mas
 - [PostgreSQL](https://www.postgresql.org/)
 - [RabbitMQ](https://www.rabbitmq.com)
 
-## :smile: Author
+## :smile: Autor
 
-Make by Dion Vítor, Contact:
+Feito por Dion Vítor, contatos:
 
 [![Gmail Badge](https://img.shields.io/badge/-dionvictor11@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:dionvictor11@gmail.com)](mailto:dionvictor11@gmail.com)
 [![WhatsApp Badge](https://img.shields.io/badge/-WhatsApp-green?style=flat-square&logo=WhatsApp&logoColor=white&link=https://api.whatsapp.com/send?phone=5561998822233)](https://api.whatsapp.com/send?phone=5561998822233)

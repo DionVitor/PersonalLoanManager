@@ -39,4 +39,4 @@ class LoanOffer(models.Model):
         return LoanStatus(self.status).name.title()
 
     def __str__(self):
-        return f"Loan offer {self.id}"
+        return f"{self.get_loan_offer_status()} - {self.id}"
