@@ -3,12 +3,13 @@ version: "3.5"
 services:
   personal_loan_manager_api:
     container_name: personal_loan_manager_api
-    build: ./api
+    build:
+      context: ./api
+      dockerfile: ./docker/django/Dockerfile
     ports:
       - "8000:8000"
     volumes:
       - ./api:/code
-    command: python3 manage.py runserver 0.0.0.0:8000
     networks:
       - personal_loan_manager_network
     depends_on:
@@ -29,7 +30,9 @@ services:
 
   celery:
     container_name: personal_loan_manager_celery
-    build: ./api
+    build:
+      context: ./api
+      dockerfile: ./docker/celery/Dockerfile
     volumes:
       - ./api:/code
     command: celery -A infra.celery_gateway.worker.app worker --loglevel=INFO -Q personal_loan_manager
