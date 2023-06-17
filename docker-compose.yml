@@ -38,6 +38,7 @@ services:
     command: celery -A infra.celery_gateway.worker.app worker --loglevel=INFO -Q personal_loan_manager
     environment:
       CELERY_BROKER_URL: amqp://rabbit_personal_loan_manager:rabbit_personal_loan_manager@rabbitmq:5672
+      DJANGO_SETTINGS_MODULE: api.settings
     depends_on:
       - rabbitmq
     networks:
