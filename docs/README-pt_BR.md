@@ -21,10 +21,12 @@
 - Clone o repositório ```git clone https://github.com/DionVitor/PersonalLoanManager/```
 - Vá para o repositório ```cd PersonalLoanManager/```
 - Crie os containers ```docker-compose up -d```
+- Migre as tabelas ```make migrate```
+- Popule o banco de dados ```make populate```
 
 ## :keyboard: Como usar o sistema
 
-- Entre na [página de preenchimento de proposta de empréstimo](http://localhost:7000/proposta-emprestimo/) para criar uma nova proposta de empréstimo
+- Entre na [página de preenchimento de proposta de empréstimo](http://localhost:7050/) para criar uma nova proposta de empréstimo
 - Veja todas as propostas de emprétimo e edite quais campos irão aparecer na página de preenchimento de prosposta de empréstimo acessando o [admin](http://localhost:8000/admin).
   - usuário: admin
   - senha: admin

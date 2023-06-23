@@ -21,10 +21,12 @@ English | [Português](https://github.com/DionVitor/PersonalLoanManager/blob/mas
 - Clone the repository ```git clone https://github.com/DionVitor/PersonalLoanManager/```
 - Go to repository ```cd PersonalLoanManager/```
 - Build and create containers ```docker-compose up -d```
+- Migrate tables ```make migrate```
+- Populate database ```make populate```
 
 ## :keyboard: How to use the system
 
-- Enter in [personal loan offer page](http://localhost:7000/proposta-emprestimo/) in order to create a new loan offer
+- Enter in [personal loan offer page](http://localhost:7050/) in order to create a new loan offer
 - See all registered loan offers and edit which fields will be appeared on personal loan offer page accessing [admin](http://localhost:8000/admin).
   - user: admin
   - password: admin
