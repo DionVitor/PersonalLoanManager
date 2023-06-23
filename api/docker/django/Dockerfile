@@ -8,11 +8,6 @@ WORKDIR /code
 COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 
-COPY ../.. /code/
-
-RUN python3 manage.py migrate
-RUN echo "from django.contrib.auth import get_user_model; User = get_user_model();  \
-    User.objects.create_superuser('admin', 'admin@example.com', 'admin')  \
-    if not User.objects.filter(username='admin').exists() else 0;" | python3 manage.py shell
+COPY . /code/
 
 CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
