@@ -23,9 +23,10 @@ services:
       context: ./front
       dockerfile: ./Dockerfile
     ports:
-      - "7050:5173"
+      - "7050:8080"
     volumes:
-      - ./front:/app
+      - ./front/public:/app/public
+      - ./front/src:/app/src
     networks:
       - personal_loan_manager_network
     depends_on:
@@ -33,6 +34,7 @@ services:
       - postgresql_database
       - celery
       - rabbitmq
+    command: npm run dev
 
   rabbitmq:
     container_name: personal_loan_manager_rabbitmq_queue
